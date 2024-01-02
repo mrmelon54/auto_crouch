@@ -1,0 +1,10 @@
+{
+  "modid": "auto_crouch",
+  "modname": "Auto Crouch",
+  "modclass": "AutoCrouch",
+  "modgroup": "com.mrmelon54.AutoCrouch",
+  "moddesc": "Automatically crouches when opening a GUI",
+  "modwebsite": "https://mrmelon54.com/minecraft/auto-crouch",
+  "modsource": "https://github.com/MrMelon54/auto_crouch",
+  "modissue": "https://github.com/MrMelon54/auto_crouch/issues"
+}
