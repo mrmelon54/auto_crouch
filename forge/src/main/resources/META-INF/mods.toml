@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "[46,)"
+issueTrackerURL = "https://github.com/MrMelon54/auto_crouch/issues"
+license = "GPL-3.0-only"
+
+[[mods]]
+modId = "auto_crouch"
+version = "${version}"
+displayName = "Auto Crouch"
+authors = "MrMelon54"
+description = "Automatically crouches when opening a GUI"
+logoFile = "/icon.png"
+
+[[dependencies.auto_crouch]]
+modId = "forge"
+mandatory = true
+versionRange = "[46,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.auto_crouch]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.auto_crouch]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.0.0,)"
+ordering = "AFTER"
+side = "BOTH"

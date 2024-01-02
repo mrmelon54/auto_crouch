@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.mrmelon54.AutoCrouch.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+    "MixinKeyMapping",
+    "MixinMinecraft"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
