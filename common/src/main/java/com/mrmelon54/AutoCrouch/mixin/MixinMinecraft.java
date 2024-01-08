@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Minecraft.class)
-public class MixinMinecraft {
+public abstract class MixinMinecraft {
     @Shadow
     @Nullable
     public LocalPlayer player;
@@ -29,15 +29,16 @@ public class MixinMinecraft {
 
     @Inject(method = "setScreen", at = @At("HEAD"))
     private void setScreenInjected(Screen screen, CallbackInfo ci) {
-        if (screen != null) {
-            ConfigStructure config = AutoCrouch.getConfig();
-            if (player != null && player.onClimbable() && !player.getAbilities().flying) {
-                if (config.mainConfig.EnableChat && screen.getClass() == ChatScreen.class)
-                    options.keyShift.setDown(true);
-                if (config.mainConfig.EnableGUIs && config.screenConfig.EnabledScreens.getOrDefault(InGameScreens.MAPPINGS.get(screen.getClass()), false))
-                    options.keyShift.setDown(true);
-            }
-        } else if (options.keyShift instanceof KeyBindingDuckProvider duckProvider)
-            options.keyShift.setDown(duckProvider.auto_crouch$isActuallyPressed());
+        if (screen == null) {
+            if (options.keyShift instanceof KeyBindingDuckProvider duckProvider)
+                AutoCrouch.setShiftHeld(duckProvider.auto_crouch$isActuallyPressed());
+            return;
+        }
+        ConfigStructure config = AutoCrouch.getConfig();
+        if (player == null || !player.onClimbable() || player.getAbilities().flying) return;
+        if (config.mainConfig.EnableChat && screen.getClass() == ChatScreen.class)
+            AutoCrouch.setShiftHeld(true);
+        if (config.mainConfig.EnableGUIs && config.screenConfig.EnabledScreens.getOrDefault(InGameScreens.MAPPINGS.get(screen.getClass()), false))
+            AutoCrouch.setShiftHeld(true);
     }
 }

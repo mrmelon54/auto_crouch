@@ -6,8 +6,10 @@ import com.mrmelon54.AutoCrouch.mappings.InGameScreens;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.gui.registry.GuiRegistry;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -20,6 +22,8 @@ public class AutoCrouch {
         return config;
     }
 
+    public static boolean isShiftHeld = false;
+
     public static void init() {
         GuiRegistry guiRegistry = AutoConfig.getGuiRegistry(ConfigStructure.class);
         guiRegistry.registerTypeProvider(new ScreenConfigProvider(), Map.class);
@@ -27,12 +31,16 @@ public class AutoCrouch {
         AutoConfig.register(ConfigStructure.class, JanksonConfigSerializer::new);
         config = AutoConfig.getConfigHolder(ConfigStructure.class).getConfig();
         InGameScreens.MAPPINGS.forEach((aClass, s) -> {
-            if (!config.screenConfig.EnabledScreens.containsKey(s))
-                config.screenConfig.EnabledScreens.put(s, true);
+            if (!config.screenConfig.EnabledScreens.containsKey(s)) config.screenConfig.EnabledScreens.put(s, true);
         });
     }
 
     public static Supplier<Screen> createConfigScreen(Screen screen) {
         return AutoConfig.getConfigScreen(ConfigStructure.class, screen);
+    }
+
+    public static void setShiftHeld(boolean bl) {
+        isShiftHeld = bl;
+        Minecraft.getInstance().options.keyShift.setDown(bl);
     }
 }

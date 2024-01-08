@@ -16,9 +16,6 @@ dependencies {
     modApi("me.shedaniel.cloth:cloth-config-fabric:${rootProject.cloth_config_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-
-    implementation include("javassist:javassist:${project.javassist_version}")
-    implementation include("org.reflections:reflections:${project.reflections_version}")
 }
 
 publishing {
