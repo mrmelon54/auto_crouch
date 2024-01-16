@@ -3,14 +3,14 @@
   "id": "auto_crouch",
   "version": "${version}",
   "name": "Auto Crouch",
-  "description": "Automatically crouches when opening a GUI",
+  "description": "${description}",
   "authors": [
     "MrMelon54"
   ],
   "contact": {
     "homepage": "https://mrmelon54.com/minecraft/auto-crouch",
-    "sources": "https://github.com/MrMelon54/auto_crouch",
-    "issues": "https://github.com/MrMelon54/auto_crouch/issues"
+    "sources": "https://github.com/mrmelon54/auto_crouch",
+    "issues": "https://github.com/mrmelon54/auto_crouch/issues"
   },
   "license": "GPL-3.0-only",
   "icon": "icon.png",
@@ -29,7 +29,8 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": "1.20.x",
-    "architectury": ">=9.0.0"
+    "minecraft": "${minecraft_version}",
+    "architectury": ">=${architectury_version}",
+    "cloth-config": ">=${cloth_config_version}"
   }
 }
