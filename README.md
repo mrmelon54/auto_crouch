@@ -1,4 +1,4 @@
-# Auto Couch
+# Auto Crouch
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W1607S8)
 
